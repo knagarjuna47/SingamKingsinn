@@ -27,7 +27,16 @@
         method="POST">
 
     <input type="text" id="name" name="name" placeholder="Full Name" required>
+
     <input type="email" id="email" name="email" placeholder="Email" required>
+
+    <!-- NEW CONTACT NUMBER FIELD -->
+    <input type="tel" id="phone" name="phone" 
+           placeholder="Contact Number" 
+           pattern="[0-9]{10}" 
+           title="Enter 10 digit mobile number"
+           required>
+
     <input type="date" id="checkin" name="checkin" required>
     <input type="date" id="checkout" name="checkout" required>
 
@@ -40,10 +49,8 @@
     <!-- Dynamic Email Subject -->
     <input type="hidden" name="_subject" id="emailSubject">
 
-    <!-- Disable captcha -->
     <input type="hidden" name="_captcha" value="false">
 
-    <!-- Redirect after submission -->
     <input type="hidden" name="_next" 
            value="https://knagarjuna47.github.io/SingamKingsinn/thankyou.html">
 
@@ -60,11 +67,12 @@ document.getElementById("bookingForm").addEventListener("submit", function() {
 
   let name = document.getElementById("name").value;
   let email = document.getElementById("email").value;
+  let phone = document.getElementById("phone").value;
   let checkin = document.getElementById("checkin").value;
   let checkout = document.getElementById("checkout").value;
   let room = document.getElementById("room").value;
 
-  // Set email subject dynamically
+  // Set dynamic email subject
   document.getElementById("emailSubject").value = 
       "Booking enquiry - " + name + " from " + checkin;
 
@@ -72,11 +80,12 @@ document.getElementById("bookingForm").addEventListener("submit", function() {
   let message = `New Booking Request:%0A
 Name: ${name}%0A
 Email: ${email}%0A
+Phone: ${phone}%0A
 Check-in: ${checkin}%0A
 Check-out: ${checkout}%0A
 Room Type: ${room}`;
 
-  let phoneNumber = "919550333582"; // Your WhatsApp number (without +)
+  let phoneNumber = "919550333582"; 
 
   window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
 
