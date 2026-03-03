@@ -36,13 +36,33 @@
            title="Enter 10 digit mobile number"
            required>
 
-    <!-- CHECK-IN DATE & TIME -->
-    <label>Check-in Date & Time</label>
-    <input type="datetime-local" id="checkin" name="checkin" required>
+    <!-- CHECK-IN -->
+    <label>Check-in Date</label>
+    <input type="date" id="checkinDate" name="checkinDate" required>
 
-    <!-- CHECK-OUT DATE & TIME -->
-    <label>Check-out Date & Time</label>
-    <input type="datetime-local" id="checkout" name="checkout" required>
+    <label>Check-in Time</label>
+    <select id="checkinTime" name="checkinTime" required>
+      <option value="">Select Time</option>
+      <option>10:00 AM</option>
+      <option>11:00 AM</option>
+      <option>12:00 PM</option>
+      <option>01:00 PM</option>
+      <option>02:00 PM</option>
+      <option>03:00 PM</option>
+    </select>
+
+    <!-- CHECK-OUT -->
+    <label>Check-out Date</label>
+    <input type="date" id="checkoutDate" name="checkoutDate" required>
+
+    <label>Check-out Time</label>
+    <select id="checkoutTime" name="checkoutTime" required>
+      <option value="">Select Time</option>
+      <option>09:00 AM</option>
+      <option>10:00 AM</option>
+      <option>11:00 AM</option>
+      <option>12:00 PM</option>
+    </select>
 
     <select id="room" name="room" required>
       <option value="">Select Room Type</option>
@@ -59,6 +79,7 @@
            value="https://knagarjuna47.github.io/SingamKingsinn/thankyou.html">
 
     <button type="submit">Book Now</button>
+
   </form>
 </section>
 
@@ -72,40 +93,43 @@ document.getElementById("bookingForm").addEventListener("submit", function() {
   let name = document.getElementById("name").value;
   let email = document.getElementById("email").value;
   let phone = document.getElementById("phone").value;
-  let checkin = document.getElementById("checkin").value;
-  let checkout = document.getElementById("checkout").value;
   let room = document.getElementById("room").value;
 
-  let checkinFormatted = new Date(checkin).toLocaleString();
-  let checkoutFormatted = new Date(checkout).toLocaleString();
+  let checkinDate = document.getElementById("checkinDate").value;
+  let checkinTime = document.getElementById("checkinTime").value;
+  let checkoutDate = document.getElementById("checkoutDate").value;
+  let checkoutTime = document.getElementById("checkoutTime").value;
+
+  let checkinFull = checkinDate + " " + checkinTime;
+  let checkoutFull = checkoutDate + " " + checkoutTime;
 
   // Email subject
   document.getElementById("emailSubject").value =
-      "Booking enquiry - " + name + " from " + checkinFormatted;
+      "Booking enquiry - " + name + " from " + checkinFull;
 
   // Admin message
   let adminMessage = `New Booking Request:%0A
 Name: ${name}%0A
 Email: ${email}%0A
 Phone: ${phone}%0A
-Check-in: ${checkinFormatted}%0A
-Check-out: ${checkoutFormatted}%0A
+Check-in: ${checkinFull}%0A
+Check-out: ${checkoutFull}%0A
 Room Type: ${room}`;
 
   // Customer confirmation message
   let customerMessage = `Dear ${name},%0A
 Thank you for choosing Singam Kings Inn.%0A
-Your booking from ${checkinFormatted} to ${checkoutFormatted} for ${room} has been received.%0A
+Your booking from ${checkinFull} to ${checkoutFull} for ${room} has been received.%0A
 We will confirm shortly.%0A
 Regards,%0A
 Singam Kings Inn`;
 
   let adminNumber = "919550333582";
 
-  // Open WhatsApp to admin
+  // Send to admin
   window.open(`https://wa.me/${adminNumber}?text=${adminMessage}`, "_blank");
 
-  // Open WhatsApp to customer after 2 seconds
+  // Send confirmation to customer
   setTimeout(function(){
     window.open(`https://wa.me/91${phone}?text=${customerMessage}`, "_blank");
   }, 2000);
