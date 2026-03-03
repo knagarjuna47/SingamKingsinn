@@ -29,63 +29,67 @@
     <!-- BASIC DETAILS -->
     <div class="form-group">
       <label>Name</label>
-      <input type="text" id="name" name="name" required>
+      <input type="text" id="name" name="Name" required>
     </div>
 
     <div class="form-group">
       <label>Email</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="Email" required>
     </div>
 
     <div class="form-group">
       <label>Contact Number</label>
-      <input type="tel" id="phone" name="phone"
+      <input type="tel" id="phone" name="Contact Number"
              pattern="[0-9]{10}" required>
     </div>
 
-<!-- CHECKIN ROW -->
-<div class="row">
-  <div>
-    <label>Checkin Date</label>
-    <input type="date" id="checkinDate" name="checkinDate" required>
-  </div>
+    <!-- CHECKIN -->
+    <div class="row">
+      <div>
+        <label>Checkin Date</label>
+        <input type="date" id="checkinDate" required>
+      </div>
 
-  <div>
-    <label>Checkin Time</label>
-    <input type="number" id="checkinHour" name="checkinHour"
-           min="1" max="12" placeholder="HH" required>
-  </div>
+      <div>
+        <label>Checkin Time</label>
+        <input type="number" id="checkinHour"
+               min="1" max="12" placeholder="HH" required>
+      </div>
 
-  <div>
-    <label>AM/PM</label>
-    <select id="checkinPeriod" name="checkinPeriod" required>
-      <option>AM</option>
-      <option>PM</option>
-    </select>
-  </div>
-</div>
+      <div>
+        <label>AM/PM</label>
+        <select id="checkinPeriod" required>
+          <option>AM</option>
+          <option>PM</option>
+        </select>
+      </div>
+    </div>
 
-<!-- CHECKOUT ROW -->
-<div class="row">
-  <div>
-    <label>Checkout Date</label>
-    <input type="date" id="checkoutDate" name="checkoutDate" required>
-  </div>
+    <!-- CHECKOUT -->
+    <div class="row">
+      <div>
+        <label>Checkout Date</label>
+        <input type="date" id="checkoutDate" required>
+      </div>
 
-  <div>
-    <label>Checkout Time</label>
-    <input type="number" id="checkoutHour" name="checkoutHour"
-           min="1" max="12" placeholder="HH" required>
-  </div>
+      <div>
+        <label>Checkout Time</label>
+        <input type="number" id="checkoutHour"
+               min="1" max="12" placeholder="HH" required>
+      </div>
 
-  <div>
-    <label>AM/PM</label>
-    <select id="checkoutPeriod" name="checkoutPeriod" required>
-      <option>AM</option>
-      <option>PM</option>
-    </select>
-  </div>
-</div>
+      <div>
+        <label>AM/PM</label>
+        <select id="checkoutPeriod" required>
+          <option>AM</option>
+          <option>PM</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Hidden combined fields for clean email -->
+    <input type="hidden" name="Check-in" id="checkinFullHidden">
+    <input type="hidden" name="Check-out" id="checkoutFullHidden">
 
     <input type="hidden" name="_subject" id="emailSubject">
     <input type="hidden" name="_captcha" value="false">
@@ -93,6 +97,7 @@
            value="https://knagarjuna47.github.io/SingamKingsinn/thankyou.html">
 
     <button type="submit">Book Now</button>
+
   </form>
 </section>
 
@@ -104,7 +109,6 @@
 document.getElementById("bookingForm").addEventListener("submit", function() {
 
   let name = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
   let phone = document.getElementById("phone").value;
 
   let checkinDate = document.getElementById("checkinDate").value;
@@ -115,15 +119,24 @@ document.getElementById("bookingForm").addEventListener("submit", function() {
   let checkoutHour = document.getElementById("checkoutHour").value;
   let checkoutPeriod = document.getElementById("checkoutPeriod").value;
 
-  let checkinFull = checkinDate + " " + checkinHour + ":00 " + checkinPeriod;
-  let checkoutFull = checkoutDate + " " + checkoutHour + ":00 " + checkoutPeriod;
+  // Format date as DD-MM-YYYY
+  let formattedCheckinDate = new Date(checkinDate).toLocaleDateString('en-GB');
+  let formattedCheckoutDate = new Date(checkoutDate).toLocaleDateString('en-GB');
 
+  let checkinFull = formattedCheckinDate + " " + checkinHour + ":00 " + checkinPeriod;
+  let checkoutFull = formattedCheckoutDate + " " + checkoutHour + ":00 " + checkoutPeriod;
+
+  // Set hidden values (this is what appears in email)
+  document.getElementById("checkinFullHidden").value = checkinFull;
+  document.getElementById("checkoutFullHidden").value = checkoutFull;
+
+  // Email subject
   document.getElementById("emailSubject").value =
       "Booking enquiry - " + name + " from " + checkinFull;
 
+  // WhatsApp message to admin
   let adminMessage = `New Booking Request:%0A
 Name: ${name}%0A
-Email: ${email}%0A
 Phone: ${phone}%0A
 Check-in: ${checkinFull}%0A
 Check-out: ${checkoutFull}`;
@@ -134,6 +147,6 @@ Check-out: ${checkoutFull}`;
 
 });
 </script>
-  
+
 </body>
 </html>
