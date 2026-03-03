@@ -43,47 +43,49 @@
              pattern="[0-9]{10}" required>
     </div>
 
-    <!-- CHECKIN ROW -->
-    <div class="row">
-      <div>
-        <label>Checkin Date</label>
-        <input type="date" id="checkinDate" required>
-      </div>
+<!-- CHECKIN ROW -->
+<div class="row">
+  <div>
+    <label>Checkin Date</label>
+    <input type="date" id="checkinDate" name="checkinDate" required>
+  </div>
 
-      <div>
-        <label>Checkin Time</label>
-        <input type="number" id="checkinHour" min="1" max="12" placeholder="HH" required>
-      </div>
+  <div>
+    <label>Checkin Time</label>
+    <input type="number" id="checkinHour" name="checkinHour"
+           min="1" max="12" placeholder="HH" required>
+  </div>
 
-      <div>
-        <label>AM/PM</label>
-        <select id="checkinPeriod" required>
-          <option>AM</option>
-          <option>PM</option>
-        </select>
-      </div>
-    </div>
+  <div>
+    <label>AM/PM</label>
+    <select id="checkinPeriod" name="checkinPeriod" required>
+      <option>AM</option>
+      <option>PM</option>
+    </select>
+  </div>
+</div>
 
-    <!-- CHECKOUT ROW -->
-    <div class="row">
-      <div>
-        <label>Checkout Date</label>
-        <input type="date" id="checkoutDate" required>
-      </div>
+<!-- CHECKOUT ROW -->
+<div class="row">
+  <div>
+    <label>Checkout Date</label>
+    <input type="date" id="checkoutDate" name="checkoutDate" required>
+  </div>
 
-      <div>
-        <label>Checkout Time</label>
-        <input type="number" id="checkoutHour" min="1" max="12" placeholder="HH" required>
-      </div>
+  <div>
+    <label>Checkout Time</label>
+    <input type="number" id="checkoutHour" name="checkoutHour"
+           min="1" max="12" placeholder="HH" required>
+  </div>
 
-      <div>
-        <label>AM/PM</label>
-        <select id="checkoutPeriod" required>
-          <option>AM</option>
-          <option>PM</option>
-        </select>
-      </div>
-    </div>
+  <div>
+    <label>AM/PM</label>
+    <select id="checkoutPeriod" name="checkoutPeriod" required>
+      <option>AM</option>
+      <option>PM</option>
+    </select>
+  </div>
+</div>
 
     <input type="hidden" name="_subject" id="emailSubject">
     <input type="hidden" name="_captcha" value="false">
