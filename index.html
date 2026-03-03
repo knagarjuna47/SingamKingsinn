@@ -1,240 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Singam Kings Inn Lodge</title>
-
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-}
-
-/* HEADER */
-header {
-    background: #0A1F44;
-    color: #fff;
-    padding: 40px 20px;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 48px;   /* Increased Size */
-}
-
-header p {
-    font-size: 20px;
-    margin-top: 10px;
-}
-
-/* NAVIGATION */
-nav {
-    background: #222;
-    text-align: center;
-    padding: 12px;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-nav a:hover {
-    color: #FFD700;
-}
-
-/* HERO SECTION */
-.hero {
-    background: url('lodge-front.jpg') no-repeat center center/cover;
-    height: 450px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-shadow: 2px 2px 5px black;
-    font-size: 32px;
-    font-weight: bold;
-    text-align: center;
-    padding: 20px;
-}
-
-/* CONTAINER */
-.container {
-    padding: 40px 20px;
-    max-width: 1100px;
-    margin: auto;
-    background: white;
-    margin-bottom: 20px;
-}
-
-h2 {
-    color: #8B0000;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* Highlights */
-.highlights {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    text-align: center;
-}
-
-.highlight-box {
-    background: #f0f5ff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* Gallery */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-}
-
-.gallery img {
-    width: 100%;
-    border-radius: 8px;
-    height: 220px;
-    object-fit: cover;
-}
-
-/* Contact */
-.contact {
-    background: #eee;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-/* Button */
-.btn {
-    display: inline-block;
-    padding: 12px 22px;
-    background: #0A1F44;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-.btn:hover {
-    background: #142d66;
-}
-
-/* Footer */
-footer {
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 15px;
-}
-
-/* MOBILE RESPONSIVE */
-@media (max-width: 768px) {
-
-    header h1 {
-        font-size: 32px;
-    }
-
-    header p {
-        font-size: 16px;
-    }
-
-    .hero {
-        height: 300px;
-        font-size: 22px;
-    }
-
-    nav a {
-        display: block;
-        margin: 8px 0;
-    }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Singam Kings inn Hotel</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-<header>
-    <h1>Singam Kings Inn Lodge</h1>
-    <p>Comfort | Safety | Luxury Stay</p>
-</header>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">Singam Kings inn</div>
+    <nav id="navMenu">
+      <a href="#home">Home</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="menu-btn" id="menuBtn">☰</div>
+  </header>
 
-<nav>
-    <a href="#about">About</a>
-    <a href="#highlights">Highlights</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-</nav>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h1>Experience Comfort & Luxury</h1>
+      <p>Your Perfect Stay Awaits</p>
+      <a href="#rooms" class="btn">View Rooms</a>
+    </div>
+  </section>
 
-<section class="hero">
-    Welcome to Singam Kings Inn Lodge
-</section>
+  <!-- ROOMS -->
+  <section id="rooms" class="rooms">
+    <h2>Our Rooms</h2>
+    <div class="cards">
 
-<div class="container" id="about">
-    <h2>About Us</h2>
+      <div class="card">
+        <img src="Images\1.png" alt="Deluxe Room">
+        <h3>Deluxe Room</h3>
+        <p>Spacious room with king-size bed, city view, and modern amenities.</p>
+      </div>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <img src="Images\2.png" alt="Deluxe Room">
+        <h3>Deluxe Room</h3>
+        <p>Spacious room with king-size bed, city view, and modern amenities.</p>
+      </div>
+      <div class="card">
+        <img src="Images\3.png" alt="Executive Suite">
+        <h3>Executive Suite</h3>
+        <p>Luxury suite with living area, premium interiors, and balcony.</p>
+      </div>
+
+      <div class="card">
+        <img src="Images\4.png" alt="Family Room">
+        <h3>Family Room</h3>
+        <p>Comfortable space designed for families with extra bedding options.</p>
+      </div>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <img src="Images\5.png" alt="Deluxe Room">
+        <h3>Deluxe Room</h3>
+        <p>Spacious room with king-size bed, city view, and modern amenities.</p>
+      </div>
+
+      <div class="card">
+        <img src="Images\6.png" alt="Executive Suite">
+        <h3>Executive Suite</h3>
+        <p>Luxury suite with living area, premium interiors, and balcony.</p>
+      </div>
+
+      <div class="card">
+        <img src="Images\7.png" alt="Family Room">
+        <h3>Family Room</h3>
+        <p>Comfortable space designed for families with extra bedding options.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <h2>About Singam Kings Inn Lodge</h2>
     <p>
-        Singam Kings Inn Lodge offers comfortable and Luxury accommodation
-        with excellent service. Whether you're traveling for business or leisure,
-        we ensure a peaceful and relaxing stay.
+      Singam Kings Inn Hotel offers world-class hospitality, elegant rooms,
+      and exceptional service. Located in the heart of the Rajampet city,
+      we ensure a memorable and relaxing experience for every guest.
     </p>
-</div>
+  </section>
 
-<div class="container" id="highlights">
-    <h2>Why Choose Us</h2>
-    <div class="highlights">
-        <div class="highlight-box">
-            🛏 Comfortable & Clean Rooms
-        </div>
-        <div class="highlight-box">
-            💰 Affordable Pricing
-        </div>
-        <div class="highlight-box">
-            📍 Prime Location
-        </div>
-        <div class="highlight-box">
-            🛎 24/7 Support
-        </div>
-    </div>
-</div>
-
-<div class="container" id="gallery">
-    <h2>Our Rooms & Facilities</h2>
-    <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a" alt="Luxury Room">
-        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd" alt="Deluxe Room">
-        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427" alt="Hotel Room">
-        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32" alt="Suite Room">
-        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa" alt="Hotel Lobby">
-        <img src="https://images.unsplash.com/photo-1521783988139-893cdd1c53f0" alt="Reception">
-        <img src="https://images.unsplash.com/photo-1501117716987-c8e1ecb210d8" alt="Corridor">
-        <img src="https://images.unsplash.com/photo-1559599238-308793637427" alt="Hotel Front View">
-    </div>
-</div>
-
-<div class="container contact" id="contact">
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
     <h2>Contact Us</h2>
-    <p><strong>📞 Phone:</strong> 9550333582</p>
-    <p><strong>📍 Location:</strong></p>
-    <a class="btn" href="https://maps.app.goo.gl/7ihQq2QET4ep2wvP7" target="_blank">
-        View on Google Maps
-    </a>
-</div>
+    <p>Email: singamkingsinn@gmail.com</p>
+    <p>Phone: +91 95503 33582</p>
+  </section>
 
-<footer>
-    <p>© 2026 Singam Kings Inn Lodge | All Rights Reserved</p>
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2024 Singam Kings Inn Hotel. All Rights Reserved.</p>
+  </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
