@@ -23,7 +23,7 @@
   <h2>Book Your Stay</h2>
 
   <form id="bookingForm"
-        action="https://formsubmit.co/4ad3f7dae3ecd6553b9fb0d3d3b53365"
+        action="https://formsubmit.co/singamkingsinn@gmail.com"
         method="POST">
 
     <input type="text" id="name" name="name" placeholder="Full Name" required>
@@ -36,6 +36,9 @@
       <option>AC Room</option>
       <option>Non AC Room</option>
     </select>
+
+    <!-- Dynamic Email Subject -->
+    <input type="hidden" name="_subject" id="emailSubject">
 
     <!-- Disable captcha -->
     <input type="hidden" name="_captcha" value="false">
@@ -52,7 +55,6 @@
   <p>© 2024 Singam Kings Inn Hotel. All Rights Reserved.</p>
 </footer>
 
-<!-- WHATSAPP SCRIPT (Must be before closing body tag) -->
 <script>
 document.getElementById("bookingForm").addEventListener("submit", function() {
 
@@ -62,6 +64,11 @@ document.getElementById("bookingForm").addEventListener("submit", function() {
   let checkout = document.getElementById("checkout").value;
   let room = document.getElementById("room").value;
 
+  // Set email subject dynamically
+  document.getElementById("emailSubject").value = 
+      "Booking from " + name;
+
+  // WhatsApp Message
   let message = `New Booking Request:%0A
 Name: ${name}%0A
 Email: ${email}%0A
@@ -69,7 +76,7 @@ Check-in: ${checkin}%0A
 Check-out: ${checkout}%0A
 Room Type: ${room}`;
 
-  let phoneNumber = "919550333582"; // your number without +
+  let phoneNumber = "919550333582"; // Your WhatsApp number (without +)
 
   window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
 
