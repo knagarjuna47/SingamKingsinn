@@ -30,15 +30,19 @@
 
     <input type="email" id="email" name="email" placeholder="Email" required>
 
-    <!-- NEW CONTACT NUMBER FIELD -->
-    <input type="tel" id="phone" name="phone" 
-           placeholder="Contact Number" 
-           pattern="[0-9]{10}" 
+    <input type="tel" id="phone" name="phone"
+           placeholder="Contact Number"
+           pattern="[0-9]{10}"
            title="Enter 10 digit mobile number"
            required>
 
-    <input type="date" id="checkin" name="checkin" required>
-    <input type="date" id="checkout" name="checkout" required>
+    <!-- CHECK-IN DATE & TIME -->
+    <label>Check-in Date & Time</label>
+    <input type="datetime-local" id="checkin" name="checkin" required>
+
+    <!-- CHECK-OUT DATE & TIME -->
+    <label>Check-out Date & Time</label>
+    <input type="datetime-local" id="checkout" name="checkout" required>
 
     <select id="room" name="room" required>
       <option value="">Select Room Type</option>
@@ -51,7 +55,7 @@
 
     <input type="hidden" name="_captcha" value="false">
 
-    <input type="hidden" name="_next" 
+    <input type="hidden" name="_next"
            value="https://knagarjuna47.github.io/SingamKingsinn/thankyou.html">
 
     <button type="submit">Book Now</button>
@@ -72,20 +76,24 @@ document.getElementById("bookingForm").addEventListener("submit", function() {
   let checkout = document.getElementById("checkout").value;
   let room = document.getElementById("room").value;
 
-  // Set dynamic email subject
-  document.getElementById("emailSubject").value = 
-      "Booking enquiry - " + name + " from " + checkin;
+  // Format date-time nicely
+  let checkinFormatted = new Date(checkin).toLocaleString();
+  let checkoutFormatted = new Date(checkout).toLocaleString();
+
+  // Set email subject
+  document.getElementById("emailSubject").value =
+      "Booking enquiry - " + name + " from " + checkinFormatted;
 
   // WhatsApp Message
   let message = `New Booking Request:%0A
 Name: ${name}%0A
 Email: ${email}%0A
 Phone: ${phone}%0A
-Check-in: ${checkin}%0A
-Check-out: ${checkout}%0A
+Check-in: ${checkinFormatted}%0A
+Check-out: ${checkoutFormatted}%0A
 Room Type: ${room}`;
 
-  let phoneNumber = "919550333582"; 
+  let phoneNumber = "919550333582";
 
   window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
 
