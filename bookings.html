@@ -20,66 +20,77 @@
 </header>
 
 <section class="booking">
-  <h2>Book Your Stay</h2>
+  <h2>Booking</h2>
 
   <form id="bookingForm"
         action="https://formsubmit.co/singamkingsinn@gmail.com"
         method="POST">
 
-    <input type="text" id="name" name="name" placeholder="Full Name" required>
+    <!-- BASIC DETAILS -->
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" id="name" name="name" required>
+    </div>
 
-    <input type="email" id="email" name="email" placeholder="Email" required>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
 
-    <input type="tel" id="phone" name="phone"
-           placeholder="Contact Number"
-           pattern="[0-9]{10}"
-           title="Enter 10 digit mobile number"
-           required>
+    <div class="form-group">
+      <label>Contact Number</label>
+      <input type="tel" id="phone" name="phone"
+             pattern="[0-9]{10}" required>
+    </div>
 
-    <!-- CHECK-IN -->
-    <label>Check-in Date</label>
-    <input type="date" id="checkinDate" name="checkinDate" required>
+    <!-- CHECKIN ROW -->
+    <div class="row">
+      <div>
+        <label>Checkin Date</label>
+        <input type="date" id="checkinDate" required>
+      </div>
 
-    <label>Check-in Time</label>
-    <select id="checkinTime" name="checkinTime" required>
-      <option value="">Select Time</option>
-      <option>10:00 AM</option>
-      <option>11:00 AM</option>
-      <option>12:00 PM</option>
-      <option>01:00 PM</option>
-      <option>02:00 PM</option>
-      <option>03:00 PM</option>
-    </select>
+      <div>
+        <label>Checkin Time</label>
+        <input type="number" id="checkinHour" min="1" max="12" placeholder="HH" required>
+      </div>
 
-    <!-- CHECK-OUT -->
-    <label>Check-out Date</label>
-    <input type="date" id="checkoutDate" name="checkoutDate" required>
+      <div>
+        <label>AM/PM</label>
+        <select id="checkinPeriod" required>
+          <option>AM</option>
+          <option>PM</option>
+        </select>
+      </div>
+    </div>
 
-    <label>Check-out Time</label>
-    <select id="checkoutTime" name="checkoutTime" required>
-      <option value="">Select Time</option>
-      <option>09:00 AM</option>
-      <option>10:00 AM</option>
-      <option>11:00 AM</option>
-      <option>12:00 PM</option>
-    </select>
+    <!-- CHECKOUT ROW -->
+    <div class="row">
+      <div>
+        <label>Checkout Date</label>
+        <input type="date" id="checkoutDate" required>
+      </div>
 
-    <select id="room" name="room" required>
-      <option value="">Select Room Type</option>
-      <option>AC Room</option>
-      <option>Non AC Room</option>
-    </select>
+      <div>
+        <label>Checkout Time</label>
+        <input type="number" id="checkoutHour" min="1" max="12" placeholder="HH" required>
+      </div>
 
-    <!-- Dynamic Email Subject -->
+      <div>
+        <label>AM/PM</label>
+        <select id="checkoutPeriod" required>
+          <option>AM</option>
+          <option>PM</option>
+        </select>
+      </div>
+    </div>
+
     <input type="hidden" name="_subject" id="emailSubject">
-
     <input type="hidden" name="_captcha" value="false">
-
     <input type="hidden" name="_next"
            value="https://knagarjuna47.github.io/SingamKingsinn/thankyou.html">
 
     <button type="submit">Book Now</button>
-
   </form>
 </section>
 
@@ -93,49 +104,34 @@ document.getElementById("bookingForm").addEventListener("submit", function() {
   let name = document.getElementById("name").value;
   let email = document.getElementById("email").value;
   let phone = document.getElementById("phone").value;
-  let room = document.getElementById("room").value;
 
   let checkinDate = document.getElementById("checkinDate").value;
-  let checkinTime = document.getElementById("checkinTime").value;
+  let checkinHour = document.getElementById("checkinHour").value;
+  let checkinPeriod = document.getElementById("checkinPeriod").value;
+
   let checkoutDate = document.getElementById("checkoutDate").value;
-  let checkoutTime = document.getElementById("checkoutTime").value;
+  let checkoutHour = document.getElementById("checkoutHour").value;
+  let checkoutPeriod = document.getElementById("checkoutPeriod").value;
 
-  let checkinFull = checkinDate + " " + checkinTime;
-  let checkoutFull = checkoutDate + " " + checkoutTime;
+  let checkinFull = checkinDate + " " + checkinHour + ":00 " + checkinPeriod;
+  let checkoutFull = checkoutDate + " " + checkoutHour + ":00 " + checkoutPeriod;
 
-  // Email subject
   document.getElementById("emailSubject").value =
       "Booking enquiry - " + name + " from " + checkinFull;
 
-  // Admin message
   let adminMessage = `New Booking Request:%0A
 Name: ${name}%0A
 Email: ${email}%0A
 Phone: ${phone}%0A
 Check-in: ${checkinFull}%0A
-Check-out: ${checkoutFull}%0A
-Room Type: ${room}`;
-
-  // Customer confirmation message
-  let customerMessage = `Dear ${name},%0A
-Thank you for choosing Singam Kings Inn.%0A
-Your booking from ${checkinFull} to ${checkoutFull} for ${room} has been received.%0A
-We will confirm shortly.%0A
-Regards,%0A
-Singam Kings Inn`;
+Check-out: ${checkoutFull}`;
 
   let adminNumber = "919550333582";
 
-  // Send to admin
   window.open(`https://wa.me/${adminNumber}?text=${adminMessage}`, "_blank");
-
-  // Send confirmation to customer
-  setTimeout(function(){
-    window.open(`https://wa.me/91${phone}?text=${customerMessage}`, "_blank");
-  }, 2000);
 
 });
 </script>
-
+  
 </body>
 </html>
