@@ -9,7 +9,7 @@
 <body>
 
 <header>
-  <div class="logo">Singam Kings inn</div>
+  <div class="logo">Singam Kings Inn</div>
   <nav>
     <a href="index.html">Home</a>
     <a href="index.html#rooms">Rooms</a>
@@ -21,17 +21,29 @@
 
 <section class="booking">
   <h2>Book Your Stay</h2>
-  <form>
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email" required>
-    <input type="date" required>
-    <input type="date" required>
-    <select required>
+
+  <form id="bookingForm"
+        action="https://formsubmit.co/singamkingsinn@gmail.com"
+        method="POST">
+
+    <input type="text" id="name" name="name" placeholder="Full Name" required>
+    <input type="email" id="email" name="email" placeholder="Email" required>
+    <input type="date" id="checkin" name="checkin" required>
+    <input type="date" id="checkout" name="checkout" required>
+
+    <select id="room" name="room" required>
       <option value="">Select Room Type</option>
-      <option>Deluxe Room</option>
-      <option>Executive Suite</option>
-      <option>Family Room</option>
+      <option>AC Room</option>
+      <option>Non AC Room</option>
     </select>
+
+    <!-- Disable captcha -->
+    <input type="hidden" name="_captcha" value="false">
+
+    <!-- Redirect after submission -->
+    <input type="hidden" name="_next" 
+           value="https://knagarjuna47.github.io/SingamKingsinn/thankyou.html">
+
     <button type="submit">Book Now</button>
   </form>
 </section>
@@ -39,6 +51,30 @@
 <footer>
   <p>© 2024 Singam Kings Inn Hotel. All Rights Reserved.</p>
 </footer>
+
+<!-- WHATSAPP SCRIPT (Must be before closing body tag) -->
+<script>
+document.getElementById("bookingForm").addEventListener("submit", function() {
+
+  let name = document.getElementById("name").value;
+  let email = document.getElementById("email").value;
+  let checkin = document.getElementById("checkin").value;
+  let checkout = document.getElementById("checkout").value;
+  let room = document.getElementById("room").value;
+
+  let message = `New Booking Request:%0A
+Name: ${name}%0A
+Email: ${email}%0A
+Check-in: ${checkin}%0A
+Check-out: ${checkout}%0A
+Room Type: ${room}`;
+
+  let phoneNumber = "919550333582"; // your number without +
+
+  window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+
+});
+</script>
 
 </body>
 </html>
